@@ -1,4 +1,4 @@
-var keyMirror = require('react/lib/keyMirror')
+import keyMirror from 'react/lib/keyMirror'
 
 export default keyMirror({
   CREATE_COMPANY: null,
