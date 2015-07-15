@@ -1,16 +1,15 @@
-var AppDispatcher = require('../dispatcher/AppDispatcher')
-var EventEmitter = require('events').EventEmitter
-var EmployeesConstants = require('../constants/EmployeesConstants')
-var assign = require('object-assign')
+import AppDispatcher from '../dispatcher/AppDispatcher'
+import { EventEmitter } from 'events'
+import assign from 'object-assign'
 
-var CHANGE_EVENT = 'change'
+import EmployeesConstants from '../constants/EmployeesConstants'
 
-var _employees = {}
-var _employeeId = 0
+let _employees = {}
+let _employeeId = 0
 
 function linkCompany (companyId) {
   let employeeId = ++_employeeId
-  var employee = {
+  let employee = {
     _companyId: companyId,
     _complete: false,
     id: employeeId,
@@ -33,7 +32,7 @@ function updateEmployee (companyId, employeeId, newData) {
 
 function addEmployee (companyId) {
   let employeeId = ++_employeeId
-  var employee = {
+  let employee = {
     _companyId: companyId,
     _complete: false,
     id: employeeId,
@@ -48,60 +47,61 @@ function removeEmployee (companyId, employeeId) {
   delete _employees[companyId][employeeId]
 }
 
-var EmployeesStore = assign({}, EventEmitter.prototype, {
+class EmployeesStoreFactory extends EventEmitter {
   getAll () {
     return _employees
-  },
+  }
 
   getById (id) {
     return _employees[id]
-  },
+  }
 
   emitChange () {
-    this.emit(CHANGE_EVENT)
-  },
+    this.emit('change')
+  }
 
   addChangeListener (callback) {
-    this.on(CHANGE_EVENT, callback)
-  },
+    this.on('change', callback)
+  }
 
   removeChangeListener (callback) {
-    this.removeListener(CHANGE_EVENT, callback)
-  },
+    this.removeListener('change', callback)
+  }
+}
 
-  dispatcherIndex: AppDispatcher.register(function (action) {
-    switch (action.actionType) {
-      case EmployeesConstants.LINK_COMPANY:
-        console.log(action)
-        linkCompany(action.companyId)
-        EmployeesStore.emitChange()
-        break
-
-      case EmployeesConstants.UNLINK_COMPANY:
-        console.log(action)
-        unlinkCompany(action.companyId)
-        EmployeesStore.emitChange()
-        break
-
-      case EmployeesConstants.ADD_EMPLOYEE:
-        console.log(action)
-        addEmployee(action.companyId)
-        EmployeesStore.emitChange()
-        break
-
-      case EmployeesConstants.UPDATE_EMPLOYEE:
-        console.log(action)
-        updateEmployee(action.companyId, action.employeeId, action.newData)
-        EmployeesStore.emitChange()
-        break
-
-      case EmployeesConstants.REMOVE_EMPLOYEE:
-        console.log(action)
-        removeEmployee(action.companyId, action.employeeId)
-        EmployeesStore.emitChange()
-        break
-    }
-  })
-})
-
+const EmployeesStore = new EmployeesStoreFactory()
 export default EmployeesStore
+
+AppDispatcher.register(function (action) {
+  switch (action.actionType) {
+    case EmployeesConstants.LINK_COMPANY:
+      console.log(action)
+      linkCompany(action.companyId)
+      EmployeesStore.emitChange()
+      break
+
+    case EmployeesConstants.UNLINK_COMPANY:
+      console.log(action)
+      unlinkCompany(action.companyId)
+      EmployeesStore.emitChange()
+      break
+
+    case EmployeesConstants.ADD_EMPLOYEE:
+      console.log(action)
+      addEmployee(action.companyId)
+      EmployeesStore.emitChange()
+      break
+
+    case EmployeesConstants.UPDATE_EMPLOYEE:
+      console.log(action)
+      updateEmployee(action.companyId, action.employeeId, action.newData)
+      EmployeesStore.emitChange()
+      break
+
+    case EmployeesConstants.REMOVE_EMPLOYEE:
+      console.log(action)
+      removeEmployee(action.companyId, action.employeeId)
+      EmployeesStore.emitChange()
+      break
+  }
+})

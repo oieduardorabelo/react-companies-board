@@ -1,14 +1,13 @@
-var AppDispatcher = require('../dispatcher/AppDispatcher')
-var EventEmitter = require('events').EventEmitter
-var CompaniesConstants = require('../constants/CompaniesConstants')
-var assign = require('object-assign')
+import AppDispatcher from '../dispatcher/AppDispatcher'
+import { EventEmitter } from 'events'
+import assign from 'object-assign'
 
-var CHANGE_EVENT = 'change'
+import CompaniesConstants from '../constants/CompaniesConstants'
 
-var _companies = {}
+let _companies = {}
 
 function createCompany (companyId) {
-  var company = {
+  let company = {
     id: companyId,
     name: ''
   }
@@ -24,48 +23,49 @@ function removeCompany (companyId) {
   delete _companies[companyId]
 }
 
-var CompaniesStore = assign({}, EventEmitter.prototype, {
+class CompaniesStoreFactory extends EventEmitter {
   getAll () {
     return _companies
-  },
+  }
 
   getById (id) {
     return _companies[id]
-  },
+  }
 
   emitChange () {
-    this.emit(CHANGE_EVENT)
-  },
+    this.emit('change')
+  }
 
   addChangeListener (callback) {
-    this.on(CHANGE_EVENT, callback)
-  },
+    this.on('change', callback)
+  }
 
   removeChangeListener (callback) {
-    this.removeListener(CHANGE_EVENT, callback)
-  },
+    this.removeListener('change', callback)
+  }
+}
 
-  dispatcherIndex: AppDispatcher.register(function (action) {
-    switch (action.actionType) {
-      case CompaniesConstants.CREATE_COMPANY:
-        console.log(action)
-        createCompany(action.companyId)
-        CompaniesStore.emitChange()
-        break
-
-      case CompaniesConstants.UPDATE_COMPANY:
-        console.log(action)
-        updateCompany(action.companyId, action.company)
-        CompaniesStore.emitChange()
-        break
-
-      case CompaniesConstants.REMOVE_COMPANY:
-        console.log(action)
-        removeCompany(action.companyId)
-        CompaniesStore.emitChange()
-        break
-    }
-  })
-})
-
+const CompaniesStore = new CompaniesStoreFactory()
 export default CompaniesStore
+
+AppDispatcher.register(function (action) {
+  switch (action.actionType) {
+    case CompaniesConstants.CREATE_COMPANY:
+      console.log(action)
+      createCompany(action.companyId)
+      CompaniesStore.emitChange()
+      break
+
+    case CompaniesConstants.UPDATE_COMPANY:
+      console.log(action)
+      updateCompany(action.companyId, action.company)
+      CompaniesStore.emitChange()
+      break
+
+    case CompaniesConstants.REMOVE_COMPANY:
+      console.log(action)
+      removeCompany(action.companyId)
+      CompaniesStore.emitChange()
+      break
+  }
+})
