@@ -72,7 +72,7 @@ export default class Company extends Component {
   render () {
     return (
       <div>
-        <div className='card-panel'>
+        <div className='card-panel blue-grey lighten-5'>
           {this.renderCompanyActions()}
           <CompanyName
             company={this.props.company}

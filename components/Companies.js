@@ -63,12 +63,17 @@ export default class Companies extends Component {
   }
 
   renderCountCompanies () {
-    let haveCompanies = Object.keys(this.state.companies).length
-    if (haveCompanies) {
-      return `${haveCompanies} Companies`
+    let companiesLen = Object.keys(this.state.companies).length
+
+    if (companiesLen < 1) {
+      return 'Board of Companies'
     }
 
-    return 'Companies'
+    if (companiesLen === 1) {
+      return `${companiesLen} Company`
+    }
+
+    return `${companiesLen} Companies`
   }
 
   render () {
