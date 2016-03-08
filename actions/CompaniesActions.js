@@ -1,5 +1,5 @@
 import AppDispatcher from '../dispatcher/AppDispatcher'
-import CompaniesConstants from '../constants/CompaniesConstants'
+import * as CompaniesConstants from '../constants/CompaniesConstants'
 
 const CompaniesActions = {
   createCompany (companyId) {

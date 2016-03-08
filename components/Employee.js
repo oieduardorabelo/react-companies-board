@@ -18,9 +18,9 @@ export default class Employee extends Component {
   }
 
   handleEmployeeChange () {
-    let firstName = this.refs.firstName.getDOMNode().value
-    let lastName = this.refs.lastName.getDOMNode().value
-    let email = this.refs.email.getDOMNode().value
+    let firstName = this.refs.firstName.value
+    let lastName = this.refs.lastName.value
+    let email = this.refs.email.value
     let _complete = !!firstName && !!lastName && validateEmail(email)
     let newData = {
       firstName,

@@ -1,8 +1,7 @@
 import AppDispatcher from '../dispatcher/AppDispatcher'
 import { EventEmitter } from 'events'
-import assign from 'object-assign'
 
-import EmployeesConstants from '../constants/EmployeesConstants'
+import * as EmployeesConstants from '../constants/EmployeesConstants'
 
 let _employees = {}
 let _employeeId = 0
@@ -27,7 +26,7 @@ function unlinkCompany (companyId) {
 }
 
 function updateEmployee (companyId, employeeId, newData) {
-  _employees[companyId][employeeId] = assign({}, _employees[companyId][employeeId], newData)
+  _employees[companyId][employeeId] = {..._employees[companyId][employeeId], ...newData}
 }
 
 function addEmployee (companyId) {

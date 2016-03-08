@@ -1,5 +1,5 @@
 import AppDispatcher from '../dispatcher/AppDispatcher'
-import EmployeesConstants from '../constants/EmployeesConstants'
+import * as EmployeesConstants from '../constants/EmployeesConstants'
 
 const EmployeesActions = {
   linkCompany (companyId) {

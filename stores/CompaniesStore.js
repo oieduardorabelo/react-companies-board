@@ -1,8 +1,7 @@
 import AppDispatcher from '../dispatcher/AppDispatcher'
 import { EventEmitter } from 'events'
-import assign from 'object-assign'
 
-import CompaniesConstants from '../constants/CompaniesConstants'
+import * as CompaniesConstants from '../constants/CompaniesConstants'
 
 let _companies = {}
 
@@ -15,7 +14,7 @@ function createCompany (companyId) {
 }
 
 function updateCompany (companyId, company) {
-  let newCompany = assign({}, _companies[companyId], company)
+  let newCompany = {..._companies[companyId], ...company}
   _companies[companyId] = newCompany
 }
 

@@ -1,9 +1,5 @@
-import keyMirror from 'react/lib/keyMirror'
-
-export default keyMirror({
-  LINK_COMPANY: null,
-  UNLINK_COMPANY: null,
-  ADD_EMPLOYEE: null,
-  UPDATE_EMPLOYEE: null,
-  REMOVE_EMPLOYEE: null
-})
+export const LINK_COMPANY = 'LINK_COMPANY'
+export const UNLINK_COMPANY = 'UNLINK_COMPANY'
+export const ADD_EMPLOYEE = 'ADD_EMPLOYEE'
+export const UPDATE_EMPLOYEE = 'UPDATE_EMPLOYEE'
+export const REMOVE_EMPLOYEE = 'REMOVE_EMPLOYEE'

@@ -1,7 +1,3 @@
-import keyMirror from 'react/lib/keyMirror'
-
-export default keyMirror({
-  CREATE_COMPANY: null,
-  UPDATE_COMPANY: null,
-  REMOVE_COMPANY: null
-})
+export const CREATE_COMPANY = 'CREATE_COMPANY'
+export const UPDATE_COMPANY = 'UPDATE_COMPANY'
+export const REMOVE_COMPANY = 'REMOVE_COMPANY'

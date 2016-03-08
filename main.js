@@ -1,6 +1,8 @@
 import React from 'react'
+import {render} from 'react-dom'
 import Companies from './components/Companies'
 
-React.render(
+render(
   <Companies/>,
-  document.getElementById('Companies'))
+  document.getElementById('Companies')
+)

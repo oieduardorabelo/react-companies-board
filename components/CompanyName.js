@@ -10,7 +10,7 @@ export default class CompanyName extends Component {
 
   handleChangeCompanyName () {
     let company = this.props.company
-    let newName = this.refs[`companyName_${this.props.company.id}`].getDOMNode().value
+    let newName = this.refs[`companyName_${this.props.company.id}`].value
     company.name = newName
     CompaniesActions.updateCompany(this.props.company.id, company)
   }
