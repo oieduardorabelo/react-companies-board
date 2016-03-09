@@ -6,11 +6,7 @@ import EmployeesActions from '../actions/EmployeesActions'
 import Employee from './Employee'
 
 export default class Employees extends Component {
-  constructor (props) {
-    super(props)
-  }
-
-  handleClickAddEmployee () {
+  handleClickAddEmployee = () => {
     EmployeesActions.addEmployee(this.props.companyId)
   }
 
@@ -28,7 +24,7 @@ export default class Employees extends Component {
 
     return (
       <div className='col s12'>
-         <h5>{`${employeesKeysLen} ${employeesLabel}`}</h5>
+        <h5>{`${employeesKeysLen} ${employeesLabel}`}</h5>
       </div>
     )
   }
@@ -37,7 +33,7 @@ export default class Employees extends Component {
     if (this.props.editMode) {
       return (
         <div className='col s12'>
-          <button className='waves-effect waves-light btn blue lighten-1' onClick={this.handleClickAddEmployee.bind(this)}><i className='material-icons left'>add</i>Add Employee</button>
+          <button className='waves-effect waves-light btn blue lighten-1' onClick={this.handleClickAddEmployee}><i className='material-icons left'>add</i>Add Employee</button>
         </div>
       )
     }

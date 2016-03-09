@@ -40,7 +40,7 @@ export default class Companies extends Component {
     })
   }
 
-  handleClickAddCompany () {
+  handleClickAddCompany = () => {
     let companyUUID = uuid.v4()
     CompaniesActions.createCompany(companyUUID)
     EmployeesActions.linkCompany(companyUUID)
@@ -80,7 +80,7 @@ export default class Companies extends Component {
     return (
       <div>
         <h3>{this.renderCountCompanies()}</h3>
-        <button className='waves-effect waves-light btn blue lighten-1' onClick={this.handleClickAddCompany.bind(this)}><i className='material-icons left'>add</i>Add Company</button>
+        <button className='waves-effect waves-light btn blue lighten-1' onClick={this.handleClickAddCompany}><i className='material-icons left'>add</i>Add Company</button>
         {this.renderCompanies()}
       </div>
     )

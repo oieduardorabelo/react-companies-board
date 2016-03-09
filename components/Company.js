@@ -22,7 +22,7 @@ export default class Company extends Component {
     let hasAllEmployeesCompleted = false
 
     if (employeesKeys.length) {
-      hasAllEmployeesCompleted = employeesKeys.map(employee => this.props.employees[employee]._complete).every(complete => complete === true)
+      hasAllEmployeesCompleted = employeesKeys.map((employee) => this.props.employees[employee]._complete).every((complete) => complete === true)
     }
 
     if (hasCompanyName && hasAllEmployeesCompleted) {
@@ -36,21 +36,21 @@ export default class Company extends Component {
     })
   }
 
-  handleClickToggleEditMode () {
+  handleClickToggleEditMode = () => {
     this.setState({
       editMode: !this.state.editMode
     })
   }
 
-  handleClickRemoveCompany () {
+  handleClickRemoveCompany = () => {
     CompaniesActions.removeCompany(this.props.company.id)
     EmployeesActions.unlinkCompany(this.props.company.id)
   }
 
   renderCompanyActions () {
-    let btnSaveAll = <button className='waves-effect waves-light btn green lighten-1' onClick={this.handleClickToggleEditMode.bind(this)} disabled={this.state.disableSaveAll}><i className='material-icons left'>done_all</i>Save All</button>
-    let btnEditCompany = <button className='waves-effect waves-light btn blue-grey lighten-1' onClick={this.handleClickToggleEditMode.bind(this)}><i className='material-icons left'>edit</i>Edit Company</button>
-    let btnRemoveCompany = <button className='waves-effect waves-light btn red lighten-1 right' onClick={this.handleClickRemoveCompany.bind(this)}><i className='material-icons left'>delete</i>Remove Company</button>
+    let btnSaveAll = <button className='waves-effect waves-light btn green lighten-1' onClick={this.handleClickToggleEditMode} disabled={this.state.disableSaveAll}><i className='material-icons left'>done_all</i>Save All</button>
+    let btnEditCompany = <button className='waves-effect waves-light btn blue-grey lighten-1' onClick={this.handleClickToggleEditMode}><i className='material-icons left'>edit</i>Edit Company</button>
+    let btnRemoveCompany = <button className='waves-effect waves-light btn red lighten-1 right' onClick={this.handleClickRemoveCompany}><i className='material-icons left'>delete</i>Remove Company</button>
 
     if (this.state.editMode) {
       return (

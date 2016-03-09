@@ -9,15 +9,11 @@ function validateEmail (email) {
 }
 
 export default class Employee extends Component {
-  constructor (props) {
-    super(props)
-  }
-
-  handleRemoveEmployeeClick () {
+  handleRemoveEmployeeClick = () => {
     EmployeesActions.removeEmployee(this.props.companyId, this.props.id)
   }
 
-  handleEmployeeChange () {
+  handleEmployeeChange = () => {
     let firstName = this.refs.firstName.value
     let lastName = this.refs.lastName.value
     let email = this.refs.email.value
@@ -40,18 +36,18 @@ export default class Employee extends Component {
       return (
         <div className='card-panel'>
           <div className='input-field'>
-            <input type='text' defaultValue={firstName} onChange={this.handleEmployeeChange.bind(this)} ref='firstName' />
+            <input type='text' defaultValue={firstName} onChange={this.handleEmployeeChange} ref='firstName' />
             <label className='active'>Frist Name</label>
           </div>
           <div className='input-field'>
-            <input type='text' defaultValue={lastName} onChange={this.handleEmployeeChange.bind(this)} ref='lastName' />
+            <input type='text' defaultValue={lastName} onChange={this.handleEmployeeChange} ref='lastName' />
             <label className='active'>Last Name</label>
           </div>
           <div className='input-field'>
-            <input type='email' defaultValue={email} onChange={this.handleEmployeeChange.bind(this)} ref='email' />
+            <input type='email' defaultValue={email} onChange={this.handleEmployeeChange} ref='email' />
             <label className='active'>Email</label>
           </div>
-          <button className='waves-effect waves-light btn red lighten-1' onClick={this.handleRemoveEmployeeClick.bind(this)}><i className='material-icons'>delete</i></button>
+          <button className='waves-effect waves-light btn red lighten-1' onClick={this.handleRemoveEmployeeClick}><i className='material-icons'>delete</i></button>
         </div>
       )
     }

@@ -4,11 +4,7 @@ const ReactPropTypes = React.PropTypes
 import CompaniesActions from '../actions/CompaniesActions'
 
 export default class CompanyName extends Component {
-  constructor (props) {
-    super(props)
-  }
-
-  handleChangeCompanyName () {
+  handleChangeCompanyName = () => {
     let company = this.props.company
     let newName = this.refs[`companyName_${this.props.company.id}`].value
     company.name = newName
@@ -21,7 +17,7 @@ export default class CompanyName extends Component {
         <div className='input-field'>
           <input type='text'
             defaultValue={this.props.company.name}
-            onChange={this.handleChangeCompanyName.bind(this)}
+            onChange={this.handleChangeCompanyName}
             ref={`companyName_${this.props.company.id}`}
           />
           <label className='active'>Company Name</label>
