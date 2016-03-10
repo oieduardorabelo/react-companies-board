@@ -19,22 +19,32 @@ export default class Companies extends Component {
   }
 
   componentDidMount () {
-    CompaniesStore.addChangeListener(this._onCompaniesStoreChage.bind(this))
-    EmployeesStore.addChangeListener(this._onEmployeesStoreChage.bind(this))
+    CompaniesStore.addChangeListener(this._onCompaniesStoreChage)
+    EmployeesStore.addChangeListener(this._onEmployeesStoreChage)
   }
 
   componentWillUnmount () {
-    CompaniesStore.removeChangeListener(this._onCompaniesStoreChage.bind(this))
-    EmployeesStore.removeChangeListener(this._onEmployeesStoreChage.bind(this))
+    CompaniesStore.removeChangeListener(this._onCompaniesStoreChage)
+    EmployeesStore.removeChangeListener(this._onEmployeesStoreChage)
   }
 
-  _onCompaniesStoreChage () {
+  render () {
+    return (
+      <div>
+        <h3>{this.renderCountCompanies()}</h3>
+        <button className='waves-effect waves-light btn blue lighten-1' onClick={this.handleClickAddCompany}><i className='material-icons left'>add</i>Add Company</button>
+        {this.renderCompanies()}
+      </div>
+    )
+  }
+
+  _onCompaniesStoreChage = () => {
     this.setState({
       companies: CompaniesStore.getAll()
     })
   }
 
-  _onEmployeesStoreChage () {
+  _onEmployeesStoreChage = () => {
     this.setState({
       employess: EmployeesStore.getAll()
     })
@@ -74,15 +84,5 @@ export default class Companies extends Component {
     }
 
     return `${companiesLen} Companies`
-  }
-
-  render () {
-    return (
-      <div>
-        <h3>{this.renderCountCompanies()}</h3>
-        <button className='waves-effect waves-light btn blue lighten-1' onClick={this.handleClickAddCompany}><i className='material-icons left'>add</i>Add Company</button>
-        {this.renderCompanies()}
-      </div>
-    )
   }
 }

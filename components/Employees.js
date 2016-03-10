@@ -6,6 +6,22 @@ import EmployeesActions from '../actions/EmployeesActions'
 import Employee from './Employee'
 
 export default class Employees extends Component {
+  static propTypes = {
+    companyId: ReactPropTypes.string,
+    editMode: ReactPropTypes.bool,
+    employees: ReactPropTypes.object
+  }
+
+  render () {
+    return (
+      <div className='row'>
+        {this.renderCountEmployees()}
+        {this.renderEmployeesActions()}
+        {this.renderEmployees()}
+      </div>
+    )
+  }
+
   handleClickAddEmployee = () => {
     EmployeesActions.addEmployee(this.props.companyId)
   }
@@ -68,20 +84,4 @@ export default class Employees extends Component {
       )
     })
   }
-
-  render () {
-    return (
-      <div className='row'>
-        {this.renderCountEmployees()}
-        {this.renderEmployeesActions()}
-        {this.renderEmployees()}
-      </div>
-    )
-  }
-}
-
-Employees.propTypes = {
-  companyId: ReactPropTypes.string,
-  editMode: ReactPropTypes.bool,
-  employees: ReactPropTypes.object
 }

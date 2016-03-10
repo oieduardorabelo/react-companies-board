@@ -9,6 +9,23 @@ function validateEmail (email) {
 }
 
 export default class Employee extends Component {
+  static propTypes = {
+    companyId: ReactPropTypes.string,
+    editMode: ReactPropTypes.bool,
+    email: ReactPropTypes.string,
+    firstName: ReactPropTypes.string,
+    id: ReactPropTypes.number,
+    lastName: ReactPropTypes.string
+  }
+
+  render () {
+    return (
+      <div className='col s4'>
+        {this.renderEmplooye()}
+      </div>
+    )
+  }
+
   handleRemoveEmployeeClick = () => {
     EmployeesActions.removeEmployee(this.props.companyId, this.props.id)
   }
@@ -62,21 +79,4 @@ export default class Employee extends Component {
       </div>
     )
   }
-
-  render () {
-    return (
-      <div className='col s4'>
-        {this.renderEmplooye()}
-      </div>
-    )
-  }
-}
-
-Employee.propTypes = {
-  companyId: ReactPropTypes.string,
-  editMode: ReactPropTypes.bool,
-  email: ReactPropTypes.string,
-  firstName: ReactPropTypes.string,
-  id: ReactPropTypes.number,
-  lastName: ReactPropTypes.string
 }

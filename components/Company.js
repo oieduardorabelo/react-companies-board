@@ -8,6 +8,15 @@ import CompanyName from './CompanyName'
 import Employees from './Employees'
 
 export default class Company extends Component {
+  static propTypes = {
+    company: ReactPropTypes.shape({
+      id: ReactPropTypes.string,
+      name: ReactPropTypes.string
+    }),
+    editMode: ReactPropTypes.bool,
+    employees: ReactPropTypes.object
+  }
+
   constructor (props) {
     super(props)
     this.state = {
@@ -34,6 +43,25 @@ export default class Company extends Component {
     return this.setState({
       disableSaveAll: true
     })
+  }
+
+  render () {
+    return (
+      <div>
+        <div className='card-panel blue-grey lighten-5'>
+          {this.renderCompanyActions()}
+          <CompanyName
+            company={this.props.company}
+            editMode={this.state.editMode}
+          />
+          <Employees
+            companyId={this.props.company.id}
+            editMode={this.state.editMode}
+            employees={this.props.employees}
+          />
+        </div>
+      </div>
+    )
   }
 
   handleClickToggleEditMode = () => {
@@ -68,32 +96,4 @@ export default class Company extends Component {
       </div>
     )
   }
-
-  render () {
-    return (
-      <div>
-        <div className='card-panel blue-grey lighten-5'>
-          {this.renderCompanyActions()}
-          <CompanyName
-            company={this.props.company}
-            editMode={this.state.editMode}
-          />
-          <Employees
-            companyId={this.props.company.id}
-            editMode={this.state.editMode}
-            employees={this.props.employees}
-          />
-        </div>
-      </div>
-    )
-  }
-}
-
-Company.propTypes = {
-  company: ReactPropTypes.shape({
-    id: ReactPropTypes.string,
-    name: ReactPropTypes.string
-  }),
-  editMode: ReactPropTypes.bool,
-  employees: ReactPropTypes.object
 }

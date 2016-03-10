@@ -4,6 +4,22 @@ const ReactPropTypes = React.PropTypes
 import CompaniesActions from '../actions/CompaniesActions'
 
 export default class CompanyName extends Component {
+  static propTypes = {
+    company: ReactPropTypes.shape({
+      id: ReactPropTypes.string,
+      name: ReactPropTypes.string
+    }),
+    editMode: ReactPropTypes.bool
+  }
+
+  render () {
+    return (
+      <div className='card-panel'>
+        {this.renderCompanyName()}
+      </div>
+    )
+  }
+
   handleChangeCompanyName = () => {
     let company = this.props.company
     let newName = this.refs[`companyName_${this.props.company.id}`].value
@@ -27,20 +43,4 @@ export default class CompanyName extends Component {
 
     return <h2>{this.props.company.name}</h2>
   }
-
-  render () {
-    return (
-      <div className='card-panel'>
-        {this.renderCompanyName()}
-      </div>
-    )
-  }
-}
-
-CompanyName.propTypes = {
-  company: ReactPropTypes.shape({
-    id: ReactPropTypes.string,
-    name: ReactPropTypes.string
-  }),
-  editMode: ReactPropTypes.bool
 }
