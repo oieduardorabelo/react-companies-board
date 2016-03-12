@@ -7,9 +7,6 @@
     "url": "https://github.com/oieduardorabelo/react-companies-board.git"
   },
   "main": "main.js",
-  "scripts": {
-    "test": "eslint ./components/*"
-  },
   "author": "Eduardo Rabelo <oieduardorabelo@gmail.com>",
   "license": "MIT",
   "devDependencies": {
