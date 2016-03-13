@@ -10,70 +10,60 @@ import EmployeesStore from '../stores/EmployeesStore'
 import Company from './Company'
 
 export default class Companies extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       companies: {},
-      employess: {}
+      employess: {},
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     CompaniesStore.addChangeListener(this._onCompaniesStoreChage)
     EmployeesStore.addChangeListener(this._onEmployeesStoreChage)
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     CompaniesStore.removeChangeListener(this._onCompaniesStoreChage)
     EmployeesStore.removeChangeListener(this._onEmployeesStoreChage)
   }
 
-  render () {
-    return (
-      <div>
-        <h3>{this.renderCountCompanies()}</h3>
-        <button className='waves-effect waves-light btn blue lighten-1' onClick={this.handleClickAddCompany}><i className='material-icons left'>add</i>Add Company</button>
-        {this.renderCompanies()}
-      </div>
-    )
-  }
-
-  _onCompaniesStoreChage = () => {
+  _onCompaniesStoreChage =() => {
     this.setState({
-      companies: CompaniesStore.getAll()
+      companies: CompaniesStore.getAll(),
     })
   }
 
-  _onEmployeesStoreChage = () => {
+  _onEmployeesStoreChage =() => {
     this.setState({
-      employess: EmployeesStore.getAll()
+      employess: EmployeesStore.getAll(),
     })
   }
 
-  handleClickAddCompany = () => {
-    let companyUUID = uuid.v4()
+  handleClickAddCompany =() => {
+    const companyUUID = uuid.v4()
     CompaniesActions.createCompany(companyUUID)
     EmployeesActions.linkCompany(companyUUID)
   }
 
-  renderCompanies () {
-    let employess = this.state.employess
-    let companies = this.state.companies
-    let companiesKeys = Object.keys(companies)
+  renderCompanies() {
+    const employess = this.state.employess
+    const companies = this.state.companies
+    const companiesKeys = Object.keys(companies)
 
     if (!companiesKeys.length) {
       return <h4>Add a new company!</h4>
     }
 
     return companiesKeys.map((key, index) => {
-      let company = companies[key]
-      let companyEmployess = employess[key]
+      const company = companies[key]
+      const companyEmployess = employess[key]
       return <Company key={index} employees={companyEmployess} company={company} />
     })
   }
 
-  renderCountCompanies () {
-    let companiesLen = Object.keys(this.state.companies).length
+  renderCountCompanies() {
+    const companiesLen = Object.keys(this.state.companies).length
 
     if (companiesLen < 1) {
       return 'Board of Companies'
@@ -84,5 +74,19 @@ export default class Companies extends Component {
     }
 
     return `${companiesLen} Companies`
+  }
+
+  render() {
+    return (
+      <div>
+        <h3>{this.renderCountCompanies()}</h3>
+        <button className="waves-effect waves-light btn blue lighten-1"
+          onClick={this.handleClickAddCompany}
+        >
+          <i className="material-icons left">add</i>Add Company
+        </button>
+        {this.renderCompanies()}
+      </div>
+    )
   }
 }
