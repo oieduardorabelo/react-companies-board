@@ -2,43 +2,43 @@ import AppDispatcher from '../dispatcher/AppDispatcher'
 import * as EmployeesConstants from '../constants/EmployeesConstants'
 
 const EmployeesActions = {
-  linkCompany (companyId) {
+  linkCompany(companyId) {
     AppDispatcher.dispatch({
       actionType: EmployeesConstants.LINK_COMPANY,
-      companyId: companyId
+      companyId,
     })
   },
 
-  unlinkCompany (companyId) {
+  unlinkCompany(companyId) {
     AppDispatcher.dispatch({
       actionType: EmployeesConstants.UNLINK_COMPANY,
-      companyId: companyId
+      companyId,
     })
   },
 
-  addEmployee (companyId) {
+  addEmployee(companyId) {
     AppDispatcher.dispatch({
       actionType: EmployeesConstants.ADD_EMPLOYEE,
-      companyId: companyId
+      companyId,
     })
   },
 
-  removeEmployee (companyId, employeeId) {
+  removeEmployee(companyId, employeeId) {
     AppDispatcher.dispatch({
       actionType: EmployeesConstants.REMOVE_EMPLOYEE,
-      companyId: companyId,
-      employeeId: employeeId
+      companyId,
+      employeeId,
     })
   },
 
-  updateEmployee (companyId, employeeId, newData) {
+  updateEmployee(companyId, employeeId, newData) {
     AppDispatcher.dispatch({
       actionType: EmployeesConstants.UPDATE_EMPLOYEE,
-      companyId: companyId,
-      employeeId: employeeId,
-      newData: newData
+      companyId,
+      employeeId,
+      newData,
     })
-  }
+  },
 }
 
 export default EmployeesActions
