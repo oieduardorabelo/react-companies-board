@@ -3,67 +3,67 @@ import { EventEmitter } from 'events'
 
 import * as EmployeesConstants from '../constants/EmployeesConstants'
 
-let _employees = {}
+const _employees = {}
 let _employeeId = 0
 
-function linkCompany (companyId) {
-  let employeeId = ++_employeeId
-  let employee = {
+function linkCompany(companyId) {
+  const employeeId = ++_employeeId
+  const employee = {
     _companyId: companyId,
     _complete: false,
     id: employeeId,
     firstName: '',
     lastName: '',
-    email: ''
+    email: '',
   }
   _employees[companyId] = {
-    [employeeId]: employee
+    [employeeId]: employee,
   }
 }
 
-function unlinkCompany (companyId) {
+function unlinkCompany(companyId) {
   delete _employees[companyId]
 }
 
-function updateEmployee (companyId, employeeId, newData) {
-  _employees[companyId][employeeId] = {..._employees[companyId][employeeId], ...newData}
+function updateEmployee(companyId, employeeId, newData) {
+  _employees[companyId][employeeId] = { ..._employees[companyId][employeeId], ...newData }
 }
 
-function addEmployee (companyId) {
-  let employeeId = ++_employeeId
-  let employee = {
+function addEmployee(companyId) {
+  const employeeId = ++_employeeId
+  const employee = {
     _companyId: companyId,
     _complete: false,
     id: employeeId,
     firstName: '',
     lastName: '',
-    email: ''
+    email: '',
   }
   _employees[companyId][employeeId] = employee
 }
 
-function removeEmployee (companyId, employeeId) {
+function removeEmployee(companyId, employeeId) {
   delete _employees[companyId][employeeId]
 }
 
 class EmployeesStoreFactory extends EventEmitter {
-  getAll () {
+  getAll() {
     return _employees
   }
 
-  getById (id) {
+  getById(id) {
     return _employees[id]
   }
 
-  emitChange () {
+  emitChange() {
     this.emit('change')
   }
 
-  addChangeListener (callback) {
+  addChangeListener(callback) {
     this.on('change', callback)
   }
 
-  removeChangeListener (callback) {
+  removeChangeListener(callback) {
     this.removeListener('change', callback)
   }
 }
@@ -71,7 +71,7 @@ class EmployeesStoreFactory extends EventEmitter {
 const EmployeesStore = new EmployeesStoreFactory()
 export default EmployeesStore
 
-AppDispatcher.register(function (action) {
+AppDispatcher.register((action) => {
   switch (action.actionType) {
     case EmployeesConstants.LINK_COMPANY:
       console.log(action)
@@ -101,6 +101,9 @@ AppDispatcher.register(function (action) {
       console.log(action)
       removeEmployee(action.companyId, action.employeeId)
       EmployeesStore.emitChange()
+      break
+    default:
+      console.log(action)
       break
   }
 })

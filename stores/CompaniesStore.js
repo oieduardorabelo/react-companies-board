@@ -3,43 +3,43 @@ import { EventEmitter } from 'events'
 
 import * as CompaniesConstants from '../constants/CompaniesConstants'
 
-let _companies = {}
+const _companies = {}
 
-function createCompany (companyId) {
-  let company = {
+function createCompany(companyId) {
+  const company = {
     id: companyId,
-    name: ''
+    name: '',
   }
   _companies[companyId] = company
 }
 
-function updateCompany (companyId, company) {
-  let newCompany = {..._companies[companyId], ...company}
+function updateCompany(companyId, company) {
+  const newCompany = { ..._companies[companyId], ...company }
   _companies[companyId] = newCompany
 }
 
-function removeCompany (companyId) {
+function removeCompany(companyId) {
   delete _companies[companyId]
 }
 
 class CompaniesStoreFactory extends EventEmitter {
-  getAll () {
+  getAll() {
     return _companies
   }
 
-  getById (id) {
+  getById(id) {
     return _companies[id]
   }
 
-  emitChange () {
+  emitChange() {
     this.emit('change')
   }
 
-  addChangeListener (callback) {
+  addChangeListener(callback) {
     this.on('change', callback)
   }
 
-  removeChangeListener (callback) {
+  removeChangeListener(callback) {
     this.removeListener('change', callback)
   }
 }
@@ -47,7 +47,7 @@ class CompaniesStoreFactory extends EventEmitter {
 const CompaniesStore = new CompaniesStoreFactory()
 export default CompaniesStore
 
-AppDispatcher.register(function (action) {
+AppDispatcher.register((action) => {
   switch (action.actionType) {
     case CompaniesConstants.CREATE_COMPANY:
       console.log(action)
@@ -65,6 +65,9 @@ AppDispatcher.register(function (action) {
       console.log(action)
       removeCompany(action.companyId)
       CompaniesStore.emitChange()
+      break
+    default:
+      console.log(action)
       break
   }
 })
