@@ -7,7 +7,7 @@
     "url": "https://github.com/oieduardorabelo/react-companies-board.git"
   },
   "main": "main.js",
-  "author": "Eduardo Rabelo <oieduardorabelo@gmail.com>",
+  "author": "Eduardo Rabelo <oieduardorabelo@gmail.com> (https://github.com/oieduardorabelo)",
   "license": "MIT",
   "devDependencies": {
     "eslint-fatigue": "github:oieduardorabelo/eslint-fatigue",
