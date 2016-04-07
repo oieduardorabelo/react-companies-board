@@ -15,5 +15,11 @@
     "flux": "^2.1.1",
     "react-fatigue-webpack": "github:oieduardorabelo/react-fatigue-webpack",
     "uuid": "^2.0.1"
+  },
+  "dependencies": {
+    "babel-eslint": "^6.0.2",
+    "eslint": "^2.7.0",
+    "eslint-config-airbnb": "^6.2.0",
+    "eslint-plugin-react": "^4.3.0"
   }
 }
