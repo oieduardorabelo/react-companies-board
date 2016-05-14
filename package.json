@@ -9,17 +9,10 @@
   "main": "main.js",
   "author": "Eduardo Rabelo <oieduardorabelo@gmail.com> (https://github.com/oieduardorabelo)",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "eslint-fatigue": "github:oieduardorabelo/eslint-fatigue",
-    "estraverse-fb": "^1.3.1",
     "flux": "^2.1.1",
     "react-fatigue-webpack": "github:oieduardorabelo/react-fatigue-webpack",
     "uuid": "^2.0.2"
-  },
-  "dependencies": {
-    "babel-eslint": "^6.0.4",
-    "eslint": "^2.10.0",
-    "eslint-config-airbnb": "^9.0.1",
-    "eslint-plugin-react": "^5.1.1"
   }
 }
