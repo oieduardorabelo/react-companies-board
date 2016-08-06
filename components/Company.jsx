@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-const ReactPropTypes = React.PropTypes
-
 import CompaniesActions from '../actions/CompaniesActions'
 import EmployeesActions from '../actions/EmployeesActions'
-
 import CompanyName from './CompanyName'
 import Employees from './Employees'
+
+const ReactPropTypes = React.PropTypes
 
 export default class Company extends Component {
   static propTypes = {
@@ -32,7 +31,7 @@ export default class Company extends Component {
 
     if (employeesKeys.length) {
       hasAllEmployeesCompleted = employeesKeys.map(
-        (employee) => this.props.employees[employee]._complete)
+        (employee) => this.props.employees[employee].isCompleted)
         .every((complete) => complete === true)
     }
 
@@ -60,7 +59,8 @@ export default class Company extends Component {
 
   renderCompanyActions() {
     const btnSaveAll = (
-      <button className="waves-effect waves-light btn green lighten-1"
+      <button
+        className="waves-effect waves-light btn green lighten-1"
         onClick={this.handleClickToggleEditMode}
         disabled={this.state.disableSaveAll}
       >
@@ -68,14 +68,16 @@ export default class Company extends Component {
       </button>
     )
     const btnEditCompany = (
-      <button className="waves-effect waves-light btn blue-grey lighten-1"
+      <button
+        className="waves-effect waves-light btn blue-grey lighten-1"
         onClick={this.handleClickToggleEditMode}
       >
         <i className="material-icons left">edit</i>Edit Company
       </button>
     )
     const btnRemoveCompany = (
-      <button className="waves-effect waves-light btn red lighten-1 right"
+      <button
+        className="waves-effect waves-light btn red lighten-1 right"
         onClick={this.handleClickRemoveCompany}
       >
         <i className="material-icons left">delete</i>Remove Company

@@ -1,9 +1,8 @@
 import React from 'react'
-const ReactPropTypes = React.PropTypes
-
 import EmployeesActions from '../actions/EmployeesActions'
-
 import Employee from './Employee'
+
+const ReactPropTypes = React.PropTypes
 
 const Employees = ({ companyId, editMode, employees }) => {
   const handleClickAddEmployee = () => {
@@ -23,7 +22,8 @@ const Employees = ({ companyId, editMode, employees }) => {
 
   const renderEmployeesActions = () => (
     <div className="col s12">
-      <button className="waves-effect waves-light btn blue lighten-1"
+      <button
+        className="waves-effect waves-light btn blue lighten-1"
         onClick={handleClickAddEmployee}
       >
         <i className="material-icons left">add</i>Add Employee

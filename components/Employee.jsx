@@ -1,7 +1,8 @@
+import shortid from 'shortid'
 import React, { Component } from 'react'
-const ReactPropTypes = React.PropTypes
-
 import EmployeesActions from '../actions/EmployeesActions'
+
+const ReactPropTypes = React.PropTypes
 
 function validateEmail(email) {
   const emailRegex = /^[a-zA-Z0-9.!#$%&"*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/ // eslint-disable-line max-len
@@ -23,15 +24,15 @@ export default class Employee extends Component {
   }
 
   handleEmployeeChange =() => {
-    const firstName = this.refs.firstName.value
-    const lastName = this.refs.lastName.value
-    const email = this.refs.email.value
-    const _complete = !!firstName && !!lastName && validateEmail(email)
+    const firstName = this.firstName.value
+    const lastName = this.lastName.value
+    const email = this.email.value
+    const isCompleted = !!firstName && !!lastName && validateEmail(email)
     const newData = {
       firstName,
       lastName,
       email,
-      _complete,
+      isCompleted,
     }
     EmployeesActions.updateEmployee(this.props.companyId, this.props.id, newData)
   }
@@ -42,27 +43,43 @@ export default class Employee extends Component {
     const email = this.props.email
 
     if (this.props.editMode) {
+      const shortidFirstName = shortid.generate()
+      const shortidLastName = shortid.generate()
+      const shortidEmail = shortid.generate()
       return (
         <div className="card-panel">
           <div className="input-field">
-            <input type="text" defaultValue={firstName}
-              onChange={this.handleEmployeeChange} ref="firstName"
+            <input
+              id={shortidFirstName}
+              type="text"
+              defaultValue={firstName}
+              onChange={this.handleEmployeeChange}
+              ref={(c) => { this.firstName = c }}
             />
-            <label className="active">Frist Name</label>
+            <label className="active" htmlFor={shortidFirstName}>Frist Name</label>
           </div>
           <div className="input-field">
-            <input type="text" defaultValue={lastName}
-              onChange={this.handleEmployeeChange} ref="lastName"
+            <input
+              id={shortidLastName}
+              type="text"
+              defaultValue={lastName}
+              onChange={this.handleEmployeeChange}
+              ref={(c) => { this.lastName = c }}
             />
-            <label className="active">Last Name</label>
+            <label className="active" htmlFor={shortidLastName}>Last Name</label>
           </div>
           <div className="input-field">
-            <input type="email" defaultValue={email}
-              onChange={this.handleEmployeeChange} ref="email"
+            <input
+              id={shortidEmail}
+              type="email"
+              defaultValue={email}
+              onChange={this.handleEmployeeChange}
+              ref={(c) => { this.email = c }}
             />
-            <label className="active">Email</label>
+            <label className="active" htmlFor={shortidEmail}>Email</label>
           </div>
-          <button className="waves-effect waves-light btn red lighten-1"
+          <button
+            className="waves-effect waves-light btn red lighten-1"
             onClick={this.handleRemoveEmployeeClick}
           >
             <i className="material-icons">delete</i>

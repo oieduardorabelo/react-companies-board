@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-const ReactPropTypes = React.PropTypes
-
 import CompaniesActions from '../actions/CompaniesActions'
+
+const ReactPropTypes = React.PropTypes
 
 export default class CompanyName extends Component {
   static propTypes = {
@@ -12,9 +12,16 @@ export default class CompanyName extends Component {
     editMode: ReactPropTypes.bool,
   }
 
-  handleChangeCompanyName =() => {
+  constructor(props) {
+    super(props)
+    this.state = {
+      companiesNames: {},
+    }
+  }
+
+  handleChangeCompanyName = () => {
     const company = this.props.company
-    const newName = this.refs[`companyName_${this.props.company.id}`].value
+    const newName = this.companiesNames[this.props.company.id].value
     company.name = newName
     CompaniesActions.updateCompany(this.props.company.id, company)
   }
@@ -23,12 +30,14 @@ export default class CompanyName extends Component {
     if (this.props.editMode) {
       return (
         <div className="input-field">
-          <input type="text"
+          <input
+            id={this.props.company.id}
+            type="text"
             defaultValue={this.props.company.name}
             onChange={this.handleChangeCompanyName}
-            ref={`companyName_${this.props.company.id}`}
+            ref={(c) => { this.companiesNames[this.props.company.id] = c }}
           />
-          <label className="active">Company Name</label>
+          <label className="active" htmlFor={this.props.company.id}>Company Name</label>
         </div>
       )
     }

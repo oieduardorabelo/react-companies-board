@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import uuid from 'uuid'
+import shortid from 'shortid'
 
 import CompaniesActions from '../actions/CompaniesActions'
 import EmployeesActions from '../actions/EmployeesActions'
@@ -19,31 +19,31 @@ export default class Companies extends Component {
   }
 
   componentDidMount() {
-    CompaniesStore.addChangeListener(this._onCompaniesStoreChage)
-    EmployeesStore.addChangeListener(this._onEmployeesStoreChage)
+    CompaniesStore.addChangeListener(this.onCompaniesStoreChage)
+    EmployeesStore.addChangeListener(this.onEmployeesStoreChage)
   }
 
   componentWillUnmount() {
-    CompaniesStore.removeChangeListener(this._onCompaniesStoreChage)
-    EmployeesStore.removeChangeListener(this._onEmployeesStoreChage)
+    CompaniesStore.removeChangeListener(this.onCompaniesStoreChage)
+    EmployeesStore.removeChangeListener(this.onEmployeesStoreChage)
   }
 
-  _onCompaniesStoreChage =() => {
+  onCompaniesStoreChage = () => {
     this.setState({
       companies: CompaniesStore.getAll(),
     })
   }
 
-  _onEmployeesStoreChage =() => {
+  onEmployeesStoreChage =() => {
     this.setState({
       employess: EmployeesStore.getAll(),
     })
   }
 
   handleClickAddCompany =() => {
-    const companyUUID = uuid.v4()
-    CompaniesActions.createCompany(companyUUID)
-    EmployeesActions.linkCompany(companyUUID)
+    const shortidCompany = shortid.generate()
+    CompaniesActions.createCompany(shortidCompany)
+    EmployeesActions.linkCompany(shortidCompany)
   }
 
   renderCompanies() {
@@ -80,7 +80,8 @@ export default class Companies extends Component {
     return (
       <div>
         <h3>{this.renderCountCompanies()}</h3>
-        <button className="waves-effect waves-light btn blue lighten-1"
+        <button
+          className="waves-effect waves-light btn blue lighten-1"
           onClick={this.handleClickAddCompany}
         >
           <i className="material-icons left">add</i>Add Company
