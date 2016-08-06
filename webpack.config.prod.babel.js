@@ -4,7 +4,7 @@ import _path from 'path'
 const path = (dir) => _path.join(__dirname, dir)
 
 export default {
-  devtools: 'inline-source-map',
+  devtools: 'source-map',
   context: path('./'),
   entry: {
     main: './main.jsx',
@@ -19,9 +19,9 @@ export default {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"',
     }),
+    new webpack.optimize.CommonsChunkPlugin('commons', 'commons.chunk.js'),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.CommonsChunkPlugin('commons', 'commons.chunk.js'),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         screw_ie8: true, // React doesn't support IE8

@@ -36,7 +36,8 @@
     "webpack-dev-server": "1.14.1"
   },
   "scripts": {
-    "start": "webpack-dev-server --progress --hot --inline --port 3000",
+    "start": "webpack-dev-server --config ./webpack.config.dev.babel.js --progress --hot --inline --port 3000",
+    "start:prod": "webpack-dev-server --config ./webpack.config.prod.babel.js --progress --hot --inline --port 3000",
     "lint": "eslint --ext .js,.jsx ./"
   }
 }
