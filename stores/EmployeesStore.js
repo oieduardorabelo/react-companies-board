@@ -1,58 +1,57 @@
-import AppDispatcher from '../dispatcher/AppDispatcher'
 import { EventEmitter } from 'events'
-
+import AppDispatcher from '../dispatcher/AppDispatcher'
 import * as EmployeesConstants from '../constants/EmployeesConstants'
 
-const _employees = {}
-let _employeeId = 0
+const employeesStore = {}
+let employeeIdIndex = 0
 
 function linkCompany(companyId) {
-  const employeeId = ++_employeeId
+  const employeeId = ++employeeIdIndex
   const employee = {
     _companyId: companyId,
-    _complete: false,
+    isCompleted: false,
     id: employeeId,
     firstName: '',
     lastName: '',
     email: '',
   }
-  _employees[companyId] = {
+  employeesStore[companyId] = {
     [employeeId]: employee,
   }
 }
 
 function unlinkCompany(companyId) {
-  delete _employees[companyId]
+  delete employeesStore[companyId]
 }
 
 function updateEmployee(companyId, employeeId, newData) {
-  _employees[companyId][employeeId] = { ..._employees[companyId][employeeId], ...newData }
+  employeesStore[companyId][employeeId] = { ...employeesStore[companyId][employeeId], ...newData }
 }
 
 function addEmployee(companyId) {
-  const employeeId = ++_employeeId
+  const employeeId = ++employeeIdIndex
   const employee = {
     _companyId: companyId,
-    _complete: false,
+    isCompleted: false,
     id: employeeId,
     firstName: '',
     lastName: '',
     email: '',
   }
-  _employees[companyId][employeeId] = employee
+  employeesStore[companyId][employeeId] = employee
 }
 
 function removeEmployee(companyId, employeeId) {
-  delete _employees[companyId][employeeId]
+  delete employeesStore[companyId][employeeId]
 }
 
 class EmployeesStoreFactory extends EventEmitter {
   getAll() {
-    return _employees
+    return employeesStore
   }
 
   getById(id) {
-    return _employees[id]
+    return employeesStore[id]
   }
 
   emitChange() {

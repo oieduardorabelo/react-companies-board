@@ -1,34 +1,33 @@
-import AppDispatcher from '../dispatcher/AppDispatcher'
 import { EventEmitter } from 'events'
-
+import AppDispatcher from '../dispatcher/AppDispatcher'
 import * as CompaniesConstants from '../constants/CompaniesConstants'
 
-const _companies = {}
+const companiesStore = {}
 
 function createCompany(companyId) {
   const company = {
     id: companyId,
     name: '',
   }
-  _companies[companyId] = company
+  companiesStore[companyId] = company
 }
 
 function updateCompany(companyId, company) {
-  const newCompany = { ..._companies[companyId], ...company }
-  _companies[companyId] = newCompany
+  const newCompany = { ...companiesStore[companyId], ...company }
+  companiesStore[companyId] = newCompany
 }
 
 function removeCompany(companyId) {
-  delete _companies[companyId]
+  delete companiesStore[companyId]
 }
 
 class CompaniesStoreFactory extends EventEmitter {
   getAll() {
-    return _companies
+    return companiesStore
   }
 
   getById(id) {
-    return _companies[id]
+    return companiesStore[id]
   }
 
   emitChange() {
