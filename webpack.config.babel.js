@@ -6,14 +6,35 @@ const path = (dir) => _path.join(__dirname, dir)
 export default {
   devtools: 'inline-source-map',
   context: path('./'),
-  entry: './main.jsx',
+  entry: {
+    main: './main.jsx',
+    commons: ['react', 'react-dom', 'flux', 'shortid'],
+  },
   output: {
     path: path('/'),
     publicPath: '/',
     filename: 'bundle.js',
   },
   plugins: [
-    new webpack.optomize.DedupePlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"production"',
+    }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.CommonsChunkPlugin('commons', 'commons.chunk.js'),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        screw_ie8: true, // React doesn't support IE8
+        warnings: false,
+      },
+      mangle: {
+        screw_ie8: true,
+      },
+      output: {
+        comments: false,
+        screw_ie8: true,
+      },
+    }),
   ],
   module: {
     loaders: [
