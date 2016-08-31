@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'test'
+
 const expect = require('expect');
 const jsdom = require('jsdom').jsdom;
 const doc = jsdom('<!doctype html><html><body></body></html>');
