@@ -45,6 +45,6 @@ export default {
     ],
   },
   resolve: {
-    extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx'],
+    extensions: ['', '.js', '.jsx'],
   },
 }

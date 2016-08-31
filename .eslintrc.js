@@ -2,6 +2,12 @@ module.exports = {
   root: true,
   parser: 'babel-eslint',
   extends: ['airbnb'],
+  globals: {
+    expect: true,
+    createSpy: true,
+    spyOn: true,
+    isSpy: true,
+  },
   parseOptions: {
     ecmaVersion: 6,
     sourceType: 'module',
@@ -11,7 +17,8 @@ module.exports = {
   },
   env: {
     browser: true,
-    es6: true
+    es6: true,
+    mocha: true
   },
   rules: {
     semi: [2, "never"]

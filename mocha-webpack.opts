@@ -1,0 +1,6 @@
+--colors
+--require babel-register
+--require .mocha-setup.js
+--webpack-config webpack.config.test.js
+--require source-map-support/register
+src/**/*_mocha.(js|jsx)

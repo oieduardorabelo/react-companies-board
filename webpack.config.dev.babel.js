@@ -4,7 +4,7 @@ import _path from 'path'
 const path = (dir) => _path.join(__dirname, dir)
 
 export default {
-  devtools: 'cheap-module-source-map',
+  devtools: 'inline-source-map',
   context: path('./'),
   entry: {
     main: './main.jsx',
@@ -30,6 +30,6 @@ export default {
     ],
   },
   resolve: {
-    extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx'],
+    extensions: ['', '.js', '.jsx'],
   },
 }
