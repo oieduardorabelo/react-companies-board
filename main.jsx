@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import Companies from './components/Companies'
+import Companies from './src/components/Companies'
 
 render(
   <Companies />,
