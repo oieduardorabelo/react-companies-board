@@ -1,10 +1,11 @@
-import webpack from 'webpack'
-import _path from 'path'
+const nodePath = require('path')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+const webpack = require('webpack')
 
-const path = (dir) => _path.join(__dirname, dir)
+const path = (dir) => nodePath.resolve(dir)
 
-export default {
-  devtools: 'inline-source-map',
+module.exports = {
+  devtool: 'source-map',
   context: path('./'),
   entry: {
     main: './main.jsx',
@@ -17,9 +18,25 @@ export default {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"development"',
+      'process.env.NODE_ENV': '"production"',
     }),
     new webpack.optimize.CommonsChunkPlugin('commons', 'commons.chunk.js'),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        screw_ie8: true,
+        warnings: false,
+      },
+      mangle: {
+        screw_ie8: true,
+      },
+      output: {
+        comments: false,
+        screw_ie8: true,
+      },
+    }),
+    new ProgressBarPlugin(),
   ],
   module: {
     loaders: [
