@@ -1,26 +1,35 @@
+/* eslint-disable global-require */
+
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const nodePath = require('path')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const webpack = require('webpack')
 
 const path = (dir) => nodePath.resolve(dir)
 
+// Assert this just to be safe.
+// Development builds of React are slow and not intended for production.
+if (process.env.NODE_ENV !== 'production') {
+  throw new Error('Production builds must have NODE_ENV=production.')
+}
+
 module.exports = {
   devtool: 'source-map',
   context: path('./'),
-  entry: {
-    main: './main.jsx',
-    commons: ['react', 'react-dom', 'flux', 'shortid'],
-  },
+  entry: [
+    require.resolve('./.polyfills'),
+    './main.jsx',
+  ],
   output: {
-    path: path('/'),
+    chunkFilename: '[name].[chunkhash:8].chunk.js',
+    filename: '[name].[hash].js',
+    path: path('dist'),
     publicPath: '/',
-    filename: 'bundle.js',
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"',
     }),
-    new webpack.optimize.CommonsChunkPlugin('commons', 'commons.chunk.js'),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
@@ -37,13 +46,44 @@ module.exports = {
       },
     }),
     new ProgressBarPlugin(),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: './template.html',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
+    }),
   ],
   module: {
     loaders: [
-      { test: /\.(js|jsx)$/, loader: 'babel', exclude: 'node_modules' },
-      { test: /\.css/, loader: 'style!css', exclude: 'node_modules' },
-      { test: /\.(ico|jpg|png)$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff' },
-      { test: /\.(ttf|eot|svg)$/, loader: 'file' },
+      {
+        test: /\.(js|jsx)$/,
+        loader: 'babel',
+        exclude: 'node_modules',
+        query: require('./.babel.env'),
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css',
+        exclude: 'node_modules',
+      },
+      {
+        test: /\.(ico|jpg|png)$/,
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff',
+      },
+      {
+        test: /\.(ttf|eot|svg)$/,
+        loader: 'file',
+      },
     ],
   },
   resolve: {

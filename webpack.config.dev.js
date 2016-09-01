@@ -1,3 +1,6 @@
+/* eslint-disable global-require */
+
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const nodePath = require('path')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const webpack = require('webpack')
@@ -7,28 +10,47 @@ const path = (dir) => nodePath.resolve(dir)
 module.exports = {
   devtool: 'inline-source-map',
   context: path('./'),
-  entry: {
-    main: './main.jsx',
-    commons: ['react', 'react-dom', 'flux', 'shortid'],
-  },
+  entry: [
+    require.resolve('./.polyfills'),
+    './main.jsx',
+  ],
   output: {
-    path: path('/'),
-    publicPath: '/',
     filename: 'bundle.js',
+    path: path('dist'),
+    pathinfo: true,
+    publicPath: '/',
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"development"',
     }),
-    new webpack.optimize.CommonsChunkPlugin('commons', 'commons.chunk.js'),
     new ProgressBarPlugin(),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: './template.html',
+    }),
   ],
   module: {
     loaders: [
-      { test: /\.(js|jsx)$/, loader: 'babel', exclude: 'node_modules' },
-      { test: /\.css/, loader: 'style!css', exclude: 'node_modules' },
-      { test: /\.(ico|jpg|png)$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff' },
-      { test: /\.(ttf|eot|svg)$/, loader: 'file' },
+      {
+        test: /\.(js|jsx)$/,
+        loader: 'babel',
+        exclude: 'node_modules',
+        query: require('./.babel.env'),
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css',
+        exclude: 'node_modules',
+      },
+      {
+        test: /\.(ico|jpg|png)$/,
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff',
+      },
+      {
+        test: /\.(ttf|eot|svg)$/,
+        loader: 'file',
+      },
     ],
   },
   resolve: {
