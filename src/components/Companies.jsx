@@ -7,12 +7,12 @@ import EmployeesActions from '../actions/EmployeesActions'
 import CompaniesStore from '../stores/CompaniesStore'
 import EmployeesStore from '../stores/EmployeesStore'
 
-import Company from './Company'
-
 export default class Companies extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      Company: null,
+      isLoading: true,
       companies: {},
       employess: {},
     }
@@ -21,6 +21,17 @@ export default class Companies extends Component {
   componentDidMount() {
     CompaniesStore.addChangeListener(this.onCompaniesStoreChage)
     EmployeesStore.addChangeListener(this.onEmployeesStoreChage)
+
+    require.ensure(['./Company'], (require) => {
+      setTimeout(() => {
+        const Company = require('./Company').default
+
+        this.setState({
+          Company,
+          isLoading: false,
+        })
+      }, 2000)
+    })
   }
 
   componentWillUnmount() {
@@ -47,6 +58,7 @@ export default class Companies extends Component {
   }
 
   renderCompanies() {
+    const { Company } = this.state
     const employess = this.state.employess
     const companies = this.state.companies
     const companiesKeys = Object.keys(companies)
@@ -77,6 +89,10 @@ export default class Companies extends Component {
   }
 
   render() {
+    if (this.state.isLoading) {
+      return <h3>Loading Companies...</h3>
+    }
+
     return (
       <div>
         <h3>{this.renderCountCompanies()}</h3>
