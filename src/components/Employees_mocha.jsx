@@ -150,7 +150,6 @@ describe('Suite for <Employess />', () => {
       const actual = underTest.find('.btn-add-employee').text()
       const result = 'Add Employee'
       expect(actual).toBe(result)
-      expect(false).toBe(true)
     })
   })
 })
