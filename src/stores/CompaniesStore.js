@@ -22,13 +22,9 @@ function removeCompany(companyId) {
 }
 
 class CompaniesStoreFactory extends EventEmitter {
-  static getAll() {
-    return companiesStore
-  }
+  getAll = () => companiesStore
 
-  static getById(id) {
-    return companiesStore[id]
-  }
+  getById = id => companiesStore[id]
 
   emitChange() {
     this.emit('change')

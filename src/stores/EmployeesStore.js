@@ -46,13 +46,9 @@ function removeEmployee(companyId, employeeId) {
 }
 
 class EmployeesStoreFactory extends EventEmitter {
-  static getAll() {
-    return employeesStore
-  }
+  getAll = () => employeesStore
 
-  static getById(id) {
-    return employeesStore[id]
-  }
+  getById = id => employeesStore[id]
 
   emitChange() {
     this.emit('change')
