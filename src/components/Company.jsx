@@ -12,8 +12,10 @@ export default class Company extends Component {
       id: ReactPropTypes.string,
       name: ReactPropTypes.string,
     }),
-    editMode: ReactPropTypes.bool,
-    employees: ReactPropTypes.object,
+    employees: ReactPropTypes.shape({
+      isCompleted: ReactPropTypes.string,
+      id: ReactPropTypes.string,
+    }),
   }
 
   constructor(props) {
@@ -30,9 +32,9 @@ export default class Company extends Component {
     let hasAllEmployeesCompleted = false
 
     if (employeesKeys.length) {
-      hasAllEmployeesCompleted = employeesKeys.map(
-        (employee) => this.props.employees[employee].isCompleted)
-        .every((complete) => complete === true)
+      hasAllEmployeesCompleted = employeesKeys
+        .map(employee => this.props.employees[employee].isCompleted)
+        .every(complete => complete === true)
     }
 
     if (hasCompanyName && hasAllEmployeesCompleted) {

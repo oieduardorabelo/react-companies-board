@@ -4,7 +4,7 @@ import shortid from 'shortid'
 import { mount } from 'enzyme'
 import Employees from './Employees'
 
-const generateEmployees = (config) => mount(<Employees {...config} />)
+const generateEmployees = config => mount(<Employees {...config} />)
 const defaultConfig = {
   employees: {},
   editMode: false,

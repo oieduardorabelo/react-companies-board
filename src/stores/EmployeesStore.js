@@ -6,7 +6,7 @@ const employeesStore = {}
 let employeeIdIndex = 0
 
 function linkCompany(companyId) {
-  const employeeId = ++employeeIdIndex
+  const employeeId = employeeIdIndex = 1 + employeeIdIndex
   const employee = {
     _companyId: companyId,
     isCompleted: false,
@@ -29,7 +29,7 @@ function updateEmployee(companyId, employeeId, newData) {
 }
 
 function addEmployee(companyId) {
-  const employeeId = ++employeeIdIndex
+  const employeeId = employeeIdIndex = 1 + employeeIdIndex
   const employee = {
     _companyId: companyId,
     isCompleted: false,
@@ -46,11 +46,11 @@ function removeEmployee(companyId, employeeId) {
 }
 
 class EmployeesStoreFactory extends EventEmitter {
-  getAll() {
+  static getAll() {
     return employeesStore
   }
 
-  getById(id) {
+  static getById(id) {
     return employeesStore[id]
   }
 

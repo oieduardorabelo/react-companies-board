@@ -22,11 +22,11 @@ function removeCompany(companyId) {
 }
 
 class CompaniesStoreFactory extends EventEmitter {
-  getAll() {
+  static getAll() {
     return companiesStore
   }
 
-  getById(id) {
+  static getById(id) {
     return companiesStore[id]
   }
 

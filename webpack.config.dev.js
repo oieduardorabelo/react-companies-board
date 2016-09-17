@@ -5,7 +5,7 @@ const nodePath = require('path')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const webpack = require('webpack')
 
-const path = (dir) => nodePath.resolve(dir)
+const path = dir => nodePath.resolve(dir)
 
 module.exports = {
   devtool: 'inline-source-map',

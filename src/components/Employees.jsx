@@ -76,7 +76,7 @@ const Employees = ({ companyId, editMode, employees }) => {
 Employees.propTypes = {
   companyId: ReactPropTypes.string,
   editMode: ReactPropTypes.bool,
-  employees: ReactPropTypes.object,
+  employees: ReactPropTypes.shape({}),
 }
 
 export default Employees
