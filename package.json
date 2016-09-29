@@ -12,7 +12,7 @@
   "dependencies": {
     "enzyme": "2.4.1",
     "expect": "1.20.2",
-    "flux": "^2.1.1",
+    "flux": "^3.0.0",
     "html-webpack-plugin": "2.22.0",
     "progress-bar-webpack-plugin": "1.9.0",
     "react": "15.3.2",
