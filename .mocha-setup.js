@@ -1,16 +1,20 @@
 process.env.NODE_ENV = 'test'
 
-const expect = require('expect');
-const jsdom = require('jsdom').jsdom;
-const doc = jsdom('<!doctype html><html><body></body></html>');
-const win = doc.defaultView;
+var jsdom = require('jsdom').jsdom;
 
-global['document'] = doc;
-global['window'] = win;
-global['navigator'] = {userAgent: 'node.js'};
-global['HTMLElement'] = global['window'].HTMLElement;
+var exposedProperties = ['window', 'navigator', 'document'];
 
-global['expect'] = expect
-global['createSpy'] = expect.createSpy
-global['spyOn'] = expect.spyOn
-global['isSpy'] = expect.isSpy
+global.document = jsdom('');
+global.window = document.defaultView;
+Object.keys(document.defaultView).forEach((property) => {
+  if (typeof global[property] === 'undefined' && property !== 'XMLHttpRequest') {
+    exposedProperties.push(property);
+    global[property] = document.defaultView[property];
+  }
+});
+
+global.navigator = {
+  userAgent: 'node.js'
+};
+
+documentRef = document;

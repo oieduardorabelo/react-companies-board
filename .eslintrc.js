@@ -9,7 +9,7 @@ module.exports = {
     isSpy: true,
   },
   parseOptions: {
-    ecmaVersion: 6,
+    ecmaVersion: 8,
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true
