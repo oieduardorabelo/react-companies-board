@@ -10,7 +10,7 @@
   "author": "Eduardo Rabelo <oieduardorabelo@gmail.com> (https://github.com/oieduardorabelo)",
   "license": "MIT",
   "dependencies": {
-    "enzyme": "2.4.1",
+    "enzyme": "2.5.0",
     "expect": "1.20.2",
     "flux": "^3.0.0",
     "html-webpack-plugin": "2.22.0",
