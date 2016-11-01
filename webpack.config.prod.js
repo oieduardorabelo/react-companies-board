@@ -68,13 +68,13 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         loader: 'babel',
-        exclude: 'node_modules',
+        exclude: /node_modules/,
         query: require('./.babel.env'),
       },
       {
         test: /\.css$/,
         loader: 'style!css',
-        exclude: 'node_modules',
+        exclude: /node_modules/,
       },
       {
         test: /\.(ico|jpg|png)$/,
@@ -87,6 +87,6 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['', '.js', '.jsx', '.json'],
   },
 }
