@@ -6,6 +6,6 @@ require.ensure(['./src/components/Companies'], (require) => {
 
   render(
     <Companies />,
-    document.getElementById('Companies')
+    document.getElementById('Companies'),
   )
 })
