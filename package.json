@@ -16,7 +16,7 @@
     "html-webpack-plugin": "2.24.1",
     "progress-bar-webpack-plugin": "1.9.0",
     "react": "15.3.2",
-    "react-dom": "15.3.2",
+    "react-dom": "15.4.0",
     "shortid": "2.2.6",
     "webpack": "1.13.3",
     "webpack-node-externals": "1.5.4"
