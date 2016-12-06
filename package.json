@@ -11,15 +11,13 @@
   "license": "MIT",
   "dependencies": {
     "enzyme": "2.6.0",
-    "expect": "1.20.2",
     "flux": "3.1.0",
     "html-webpack-plugin": "2.24.1",
     "progress-bar-webpack-plugin": "1.9.0",
     "react": "15.4.1",
     "react-dom": "15.4.1",
     "shortid": "2.2.6",
-    "webpack": "1.13.3",
-    "webpack-node-externals": "1.5.4"
+    "webpack": "1.13.3"
   },
   "devDependencies": {
     "babel-cli": "6.18.0",
@@ -40,9 +38,6 @@
     "eslint-plugin-jsx-a11y": "2.2.3",
     "eslint-plugin-react": "6.7.1",
     "file-loader": "0.9.0",
-    "jsdom": "9.8.3",
-    "mocha": "3.2.0",
-    "mocha-webpack": "0.7.0",
     "object-assign": "4.1.0",
     "promise": "7.1.1",
     "react-addons-test-utils": "15.4.1",
@@ -57,6 +52,6 @@
     "start": "webpack-validator webpack.config.dev.js && webpack-dev-server --config ./webpack.config.dev.js --hot --inline --port 3000",
     "start:prod": "webpack-validator webpack.config.prod.js && webpack-dev-server --config ./webpack.config.prod.js --hot --inline --port 3000",
     "lint": "eslint --ext .js,.jsx ./",
-    "test": "webpack-validator webpack.config.test.js && mocha-webpack --opts mocha-webpack.opts"
+    "test": ""
   }
 }

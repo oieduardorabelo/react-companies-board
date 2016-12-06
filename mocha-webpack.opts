@@ -1,4 +1,0 @@
---colors
---webpack-config webpack.config.test.js
---require .mocha-setup.js
-src/**/*_mocha.(js|jsx)

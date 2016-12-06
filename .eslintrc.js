@@ -18,7 +18,7 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
-    mocha: true
+    jasmine: true
   },
   rules: {
     semi: [2, "never"]
