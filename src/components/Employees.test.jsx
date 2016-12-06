@@ -1,4 +1,3 @@
-import expect from 'expect'
 import React from 'react'
 import shortid from 'shortid'
 import { mount } from 'enzyme'
