@@ -1,0 +1,26 @@
+{
+  "presets": ["es2017", "es2015", "react"],
+  "plugins": [
+    "transform-class-properties",
+    "transform-object-rest-spread",
+    ["transform-regenerator", {
+      "async": false
+    }],
+    ["transform-runtime", {
+      "helpers": false,
+      "polyfill": false,
+      "regenerator": true
+    }]
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "transform-react-jsx-source",
+        "transform-react-jsx-self"
+      ]
+    },
+    "production": {
+      "plugins": ["transform-react-remove-prop-types"]
+    }
+  }
+}

@@ -69,7 +69,6 @@ module.exports = {
         test: /\.(js|jsx)$/,
         loader: 'babel',
         exclude: /node_modules/,
-        query: require('./.babel.env'),
       },
       {
         test: /\.css$/,

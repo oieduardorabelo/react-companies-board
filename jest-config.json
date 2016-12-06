@@ -2,8 +2,5 @@
   "bail": true,
   "verbose": true,
   "setupFiles": ["<rootDir>/.polyfills.js"],
-  "testPathDirs": ["<rootDir>/src"],
-  "transform": {
-    "^.+\\.(test|spec)\\.jsx?$": "<rootDir>/jest-transform.js"
-  }
+  "testPathDirs": ["<rootDir>/src"]
 }
