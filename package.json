@@ -45,7 +45,7 @@
     "jest": "18.0.0",
     "object-assign": "4.1.0",
     "promise": "7.1.1",
-    "react-addons-test-utils": "15.4.1",
+    "react-addons-test-utils": "15.4.2",
     "source-map-support": "0.4.7",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
