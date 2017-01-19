@@ -51,7 +51,7 @@
     "url-loader": "0.5.7",
     "webpack-dev-server": "1.16.2",
     "webpack-validator": "2.3.0",
-    "whatwg-fetch": "2.0.1"
+    "whatwg-fetch": "2.0.2"
   },
   "scripts": {
     "start": "webpack-validator webpack.config.dev.js && webpack-dev-server --config ./webpack.config.dev.js --hot --inline --port 3000",
