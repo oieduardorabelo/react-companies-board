@@ -49,7 +49,7 @@
     "source-map-support": "0.4.11",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
-    "webpack-dev-server": "1.16.2",
+    "webpack-dev-server": "2.2.1",
     "webpack-validator": "2.3.0",
     "whatwg-fetch": "2.0.2"
   },
