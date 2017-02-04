@@ -1,4 +1,6 @@
 import React from 'react'
+import shortid from 'shortid'
+
 import EmployeesActions from '../actions/EmployeesActions'
 import Employee from './Employee'
 
@@ -48,7 +50,7 @@ const Employees = ({ companyId, editMode, employees }) => {
       const employee = employees[key]
 
       return (
-        <div key={index}>
+        <div key={shortid.generate()}>
           <Employee
             companyId={companyId}
             editMode={editMode}

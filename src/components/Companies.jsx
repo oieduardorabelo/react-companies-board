@@ -67,10 +67,10 @@ export default class Companies extends Component {
       return <h4>Add a new company!</h4>
     }
 
-    return companiesKeys.map((key, index) => {
+    return companiesKeys.map((key) => {
       const company = companies[key]
       const companyEmployess = employess[key]
-      return <Company key={index} employees={companyEmployess} company={company} />
+      return <Company key={shortid.generate()} employees={companyEmployess} company={company} />
     })
   }
 
