@@ -11,11 +11,11 @@ export default class Company extends Component {
     company: ReactPropTypes.shape({
       id: ReactPropTypes.string,
       name: ReactPropTypes.string,
-    }),
+    }).isRequired,
     employees: ReactPropTypes.shape({
       isCompleted: ReactPropTypes.string,
       id: ReactPropTypes.string,
-    }),
+    }).isRequired,
   }
 
   constructor(props) {

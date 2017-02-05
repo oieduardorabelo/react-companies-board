@@ -8,8 +8,8 @@ export default class CompanyName extends Component {
     company: ReactPropTypes.shape({
       id: ReactPropTypes.string,
       name: ReactPropTypes.string,
-    }),
-    editMode: ReactPropTypes.bool,
+    }).isRequired,
+    editMode: ReactPropTypes.bool.isRequired,
   }
 
   constructor(props) {
