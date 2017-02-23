@@ -42,7 +42,7 @@
     "eslint-plugin-jsx-a11y": "4.0.0",
     "eslint-plugin-react": "6.10.0",
     "file-loader": "0.10.0",
-    "jest": "18.1.0",
+    "jest": "19.0.2",
     "object-assign": "4.1.1",
     "promise": "7.1.1",
     "react-addons-test-utils": "15.4.2",
