@@ -6,10 +6,17 @@ import Employees from './Employees'
 
 const generateEmployees = config => mount(<Employees {...config} />)
 const defaultConfig = {
-  employees: {},
   editMode: false,
   companyId: shortid.generate(),
 }
+const generateUser = id => ({
+  [id]: {
+    id: Math.random() * 10,
+    email: `${id}@email.com`,
+    firstName: `firstName for ${id}`,
+    lastName: `lastName for ${id}`,
+  },
+})
 
 describe('Suite for <Employess />', () => {
   describe('rendering with 0 employees, and not in edit mode', () => {
@@ -32,7 +39,7 @@ describe('Suite for <Employess />', () => {
     const underTest = generateEmployees({
       ...defaultConfig,
       employees: {
-        1: {},
+        ...generateUser('hoajA'),
       },
     })
 
@@ -53,8 +60,8 @@ describe('Suite for <Employess />', () => {
     const underTest = generateEmployees({
       ...defaultConfig,
       employees: {
-        1: {},
-        2: {},
+        ...generateUser('hoajA'),
+        ...generateUser('hoCjA'),
       },
     })
 
@@ -101,7 +108,7 @@ describe('Suite for <Employess />', () => {
       ...defaultConfig,
       editMode: true,
       employees: {
-        1: {},
+        ...generateUser('hoajA'),
       },
     })
 
@@ -129,8 +136,8 @@ describe('Suite for <Employess />', () => {
       ...defaultConfig,
       editMode: true,
       employees: {
-        1: {},
-        2: {},
+        ...generateUser('hoajA'),
+        ...generateUser('hoCjA'),
       },
     })
 
