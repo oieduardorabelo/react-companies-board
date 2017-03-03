@@ -2,5 +2,5 @@
   "bail": true,
   "verbose": true,
   "setupFiles": ["<rootDir>/.polyfills.js"],
-  "testPathDirs": ["<rootDir>/src"]
+  "roots": ["<rootDir>/src"]
 }
