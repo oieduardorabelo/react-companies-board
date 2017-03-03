@@ -46,9 +46,8 @@ const Employees = ({ companyId, editMode, employees }) => {
       )
     }
 
-    return employeesKeys.map((key, index) => {
+    return employeesKeys.map((key) => {
       const employee = employees[key]
-
       return (
         <div key={shortid.generate()}>
           <Employee
@@ -76,9 +75,9 @@ const Employees = ({ companyId, editMode, employees }) => {
 }
 
 Employees.propTypes = {
-  companyId: ReactPropTypes.string,
-  editMode: ReactPropTypes.bool,
-  employees: ReactPropTypes.shape({}),
+  companyId: ReactPropTypes.string.isRequired,
+  editMode: ReactPropTypes.bool.isRequired,
+  employees: ReactPropTypes.shape({}).isRequired,
 }
 
 export default Employees
