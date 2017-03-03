@@ -74,10 +74,18 @@ const Employees = ({ companyId, editMode, employees }) => {
   )
 }
 
+Employees.defaultProps = {
+  employees: {},
+}
+
 Employees.propTypes = {
   companyId: ReactPropTypes.string.isRequired,
   editMode: ReactPropTypes.bool.isRequired,
-  employees: ReactPropTypes.shape({}).isRequired,
+  employees: ReactPropTypes.shape({
+    emai: ReactPropTypes.string,
+    firstName: ReactPropTypes.string,
+    id: ReactPropTypes.string,
+  }),
 }
 
 export default Employees

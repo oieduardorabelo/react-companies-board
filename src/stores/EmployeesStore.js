@@ -6,7 +6,8 @@ const employeesStore = {}
 let employeeIdIndex = 0
 
 function linkCompany(companyId) {
-  const employeeId = employeeIdIndex = 1 + employeeIdIndex
+  employeeIdIndex += 1
+  const employeeId = employeeIdIndex
   const employee = {
     _companyId: companyId,
     isCompleted: false,
@@ -29,7 +30,8 @@ function updateEmployee(companyId, employeeId, newData) {
 }
 
 function addEmployee(companyId) {
-  const employeeId = employeeIdIndex = 1 + employeeIdIndex
+  employeeIdIndex += 1
+  const employeeId = employeeIdIndex
   const employee = {
     _companyId: companyId,
     isCompleted: false,
