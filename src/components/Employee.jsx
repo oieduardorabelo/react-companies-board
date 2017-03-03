@@ -11,12 +11,12 @@ function validateEmail(email) {
 
 export default class Employee extends Component {
   static propTypes = {
-    companyId: ReactPropTypes.string,
-    editMode: ReactPropTypes.bool,
-    email: ReactPropTypes.string,
-    firstName: ReactPropTypes.string,
-    id: ReactPropTypes.number,
-    lastName: ReactPropTypes.string,
+    companyId: ReactPropTypes.string.isRequired,
+    editMode: ReactPropTypes.bool.isRequired,
+    email: ReactPropTypes.string.isRequired,
+    firstName: ReactPropTypes.string.isRequired,
+    id: ReactPropTypes.number.isRequired,
+    lastName: ReactPropTypes.string.isRequired,
   }
 
   handleRemoveEmployeeClick =() => {
