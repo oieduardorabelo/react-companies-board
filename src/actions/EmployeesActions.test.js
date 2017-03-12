@@ -27,4 +27,14 @@ describe('Suite for <EmployeesActions />', () => {
       companyId: '123companyId',
     })
   })
+
+  it('dipsatch addEmployee correctly', () => {
+    EmployeesActions.addEmployee('123companyId')
+
+    expect(AppDispatcher.dispatch).toHaveBeenCalledTimes(1)
+    expect(AppDispatcher.dispatch).toHaveBeenCalledWith({
+      actionType: 'ADD_EMPLOYEE',
+      companyId: '123companyId',
+    })
+  })
 })
