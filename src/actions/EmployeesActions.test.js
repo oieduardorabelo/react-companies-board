@@ -37,4 +37,15 @@ describe('Suite for <EmployeesActions />', () => {
       companyId: '123companyId',
     })
   })
+
+  it('dipsatch removeEmployee correctly', () => {
+    EmployeesActions.removeEmployee('123companyId', '123employeeId')
+
+    expect(AppDispatcher.dispatch).toHaveBeenCalledTimes(1)
+    expect(AppDispatcher.dispatch).toHaveBeenCalledWith({
+      actionType: 'REMOVE_EMPLOYEE',
+      companyId: '123companyId',
+      employeeId: '123employeeId',
+    })
+  })
 })
