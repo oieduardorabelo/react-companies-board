@@ -46,7 +46,7 @@
     "object-assign": "4.1.1",
     "promise": "7.1.1",
     "react-addons-test-utils": "15.4.2",
-    "source-map-support": "0.4.12",
+    "source-map-support": "0.4.13",
     "style-loader": "0.13.2",
     "url-loader": "0.5.8",
     "webpack-dev-server": "2.4.1",
