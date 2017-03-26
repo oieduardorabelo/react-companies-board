@@ -11,14 +11,14 @@
   "license": "MIT",
   "dependencies": {
     "babel-jest": "19.0.0",
-    "enzyme": "2.7.1",
+    "enzyme": "2.8.0",
     "flux": "3.1.2",
     "html-webpack-plugin": "2.28.0",
     "progress-bar-webpack-plugin": "1.9.3",
     "react": "15.4.2",
     "react-dom": "15.4.2",
     "shortid": "2.2.8",
-    "webpack": "2.3.1"
+    "webpack": "2.3.2"
   },
   "devDependencies": {
     "babel-core": "6.24.0",
@@ -50,7 +50,7 @@
     "style-loader": "0.16.0",
     "url-loader": "0.5.8",
     "webpack-dev-server": "2.4.2",
-    "webpack-validator": "2.3.0",
+    "webpack-validator": "3.0.0",
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
