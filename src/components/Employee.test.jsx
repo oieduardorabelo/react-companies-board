@@ -24,4 +24,14 @@ describe('Suite for <Employee />', () => {
       expect(actual).toBe(result)
     })
   })
+
+  describe('rendering in no-editMode', () => {
+    const underTest = generateEmployee(Object.assign(defaultConfig))
+
+    it('should render <ul> tag', () => {
+      const actual = underTest.find('ul').length
+      const result = 1
+      expect(actual).toBe(result)
+    })
+  })
 })
