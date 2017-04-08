@@ -50,12 +50,11 @@
     "style-loader": "0.16.1",
     "url-loader": "0.5.8",
     "webpack-dev-server": "2.4.2",
-    "webpack-validator": "3.0.0",
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "start": "webpack-validator webpack.config.dev.js && webpack-dev-server --config ./webpack.config.dev.js --hot --inline --port 3000",
-    "start:prod": "webpack-validator webpack.config.prod.js && webpack-dev-server --config ./webpack.config.prod.js --hot --inline --port 3000",
+    "start": "webpack-dev-server --config ./webpack.config.dev.js --hot --inline --port 3000",
+    "start:prod": "webpack-dev-server --config ./webpack.config.prod.js --hot --inline --port 3000",
     "lint": "eslint --ext .js,.jsx ./",
     "test": "NODE_ENV=test jest --config ./jest-config.json --env=jsdom --no-cache"
   }
