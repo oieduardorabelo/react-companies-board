@@ -34,25 +34,25 @@ module.exports = {
     loaders: [
       {
         test: /\.(js|jsx)$/,
-        loader: 'babel',
+        use: 'babel-loader',
         exclude: /node_modules/,
       },
       {
         test: /\.css$/,
-        loader: 'style!css',
+        use: 'style!css-loader',
         exclude: /node_modules/,
       },
       {
         test: /\.(ico|jpg|png)$/,
-        loader: 'url-loader?limit=10000&mimetype=application/font-woff',
+        use: 'url-loader?limit=10000&mimetype=application/font-woff',
       },
       {
         test: /\.(ttf|eot|svg)$/,
-        loader: 'file',
+        use: 'file-loader',
       },
     ],
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.json'],
+    extensions: ['.js', '.jsx', '.json'],
   },
 }
