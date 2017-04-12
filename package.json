@@ -11,7 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "babel-jest": "19.0.0",
-    "enzyme": "2.8.0",
+    "enzyme": "2.8.1",
     "flux": "3.1.2",
     "html-webpack-plugin": "2.28.0",
     "progress-bar-webpack-plugin": "1.9.3",
