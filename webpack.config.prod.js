@@ -1,5 +1,3 @@
-/* eslint-disable global-require */
-
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const nodePath = require('path')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
