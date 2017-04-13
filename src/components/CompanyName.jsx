@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import CompaniesActions from '../actions/CompaniesActions'
+import React, { Component } from 'react';
+import CompaniesActions from '../actions/CompaniesActions';
 
-const ReactPropTypes = React.PropTypes
+const ReactPropTypes = React.PropTypes;
 
 export default class CompanyName extends Component {
   static propTypes = {
@@ -10,19 +10,19 @@ export default class CompanyName extends Component {
       name: ReactPropTypes.string,
     }).isRequired,
     editMode: ReactPropTypes.bool.isRequired,
-  }
+  };
 
   constructor(props) {
-    super(props)
-    this.companiesNames = {}
+    super(props);
+    this.companiesNames = {};
   }
 
   handleChangeCompanyName = () => {
-    const company = this.props.company
-    const newName = this.companiesNames[this.props.company.id].value
-    company.name = newName
-    CompaniesActions.updateCompany(this.props.company.id, company)
-  }
+    const company = this.props.company;
+    const newName = this.companiesNames[this.props.company.id].value;
+    company.name = newName;
+    CompaniesActions.updateCompany(this.props.company.id, company);
+  };
 
   renderCompanyName() {
     if (this.props.editMode) {
@@ -33,14 +33,18 @@ export default class CompanyName extends Component {
             type="text"
             defaultValue={this.props.company.name}
             onChange={this.handleChangeCompanyName}
-            ref={(c) => { this.companiesNames[this.props.company.id] = c }}
+            ref={c => {
+              this.companiesNames[this.props.company.id] = c;
+            }}
           />
-          <label className="active" htmlFor={this.props.company.id}>Company Name</label>
+          <label className="active" htmlFor={this.props.company.id}>
+            Company Name
+          </label>
         </div>
-      )
+      );
     }
 
-    return <h2>{this.props.company.name}</h2>
+    return <h2>{this.props.company.name}</h2>;
   }
 
   render() {
@@ -48,6 +52,6 @@ export default class CompanyName extends Component {
       <div className="card-panel">
         {this.renderCompanyName()}
       </div>
-    )
+    );
   }
 }

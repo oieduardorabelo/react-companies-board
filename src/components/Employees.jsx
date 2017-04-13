@@ -1,26 +1,28 @@
-import React from 'react'
-import shortid from 'shortid'
+import React from 'react';
+import shortid from 'shortid';
 
-import EmployeesActions from '../actions/EmployeesActions'
-import Employee from './Employee'
+import EmployeesActions from '../actions/EmployeesActions';
+import Employee from './Employee';
 
-const ReactPropTypes = React.PropTypes
+const ReactPropTypes = React.PropTypes;
 
 const Employees = ({ companyId, editMode, employees }) => {
   const handleClickAddEmployee = () => {
-    EmployeesActions.addEmployee(companyId)
-  }
+    EmployeesActions.addEmployee(companyId);
+  };
 
   const renderCountEmployees = () => {
-    const employeesKeysLen = Object.keys(employees).length
-    const employeesLabel = employeesKeysLen > 1 ? 'Employees' : 'Employee'
+    const employeesKeysLen = Object.keys(employees).length;
+    const employeesLabel = employeesKeysLen > 1 ? 'Employees' : 'Employee';
 
     return (
       <div className="col s12">
-        <h5 className="heading-employees">{`${employeesKeysLen} ${employeesLabel}`}</h5>
+        <h5 className="heading-employees">
+          {`${employeesKeysLen} ${employeesLabel}`}
+        </h5>
       </div>
-    )
-  }
+    );
+  };
 
   const renderEmployeesActions = () => (
     <div className="col s12">
@@ -31,10 +33,10 @@ const Employees = ({ companyId, editMode, employees }) => {
         <i className="material-icons left" />Add Employee
       </button>
     </div>
-  )
+  );
 
   const renderEmployees = () => {
-    const employeesKeys = Object.keys(employees)
+    const employeesKeys = Object.keys(employees);
 
     if (!employeesKeys.length) {
       return (
@@ -43,11 +45,11 @@ const Employees = ({ companyId, editMode, employees }) => {
             <h5 className="flow-text">At least, one employee is required</h5>
           </div>
         </div>
-      )
+      );
     }
 
-    return employeesKeys.map((key) => {
-      const employee = employees[key]
+    return employeesKeys.map(key => {
+      const employee = employees[key];
       return (
         <div key={shortid.generate()}>
           <Employee
@@ -59,11 +61,11 @@ const Employees = ({ companyId, editMode, employees }) => {
             lastName={employee.lastName}
           />
         </div>
-      )
-    })
-  }
+      );
+    });
+  };
 
-  const editActions = editMode && renderEmployeesActions()
+  const editActions = editMode && renderEmployeesActions();
 
   return (
     <div className="row">
@@ -71,12 +73,12 @@ const Employees = ({ companyId, editMode, employees }) => {
       {editActions}
       {renderEmployees()}
     </div>
-  )
-}
+  );
+};
 
 Employees.defaultProps = {
   employees: {},
-}
+};
 
 Employees.propTypes = {
   companyId: ReactPropTypes.string.isRequired,
@@ -86,6 +88,6 @@ Employees.propTypes = {
     firstName: ReactPropTypes.string,
     id: ReactPropTypes.string,
   }),
-}
+};
 
-export default Employees
+export default Employees;

@@ -1,10 +1,10 @@
-import React from 'react'
-import { mount } from 'enzyme'
+import React from 'react';
+import { mount } from 'enzyme';
 
-import CompaniesActions from '../actions/CompaniesActions'
-import CompanyName from './CompanyName'
+import CompaniesActions from '../actions/CompaniesActions';
+import CompanyName from './CompanyName';
 
-CompaniesActions.updateCompany = jest.fn()
+CompaniesActions.updateCompany = jest.fn();
 
 describe('Suite for <CompanyName />', () => {
   it('should render in no-editMode', () => {
@@ -15,10 +15,10 @@ describe('Suite for <CompanyName />', () => {
           name: 'HJK',
         }}
         editMode={false}
-      />,
-    )
-    expect(underTest.find('h2').text()).toBe('HJK')
-  })
+      />
+    );
+    expect(underTest.find('h2').text()).toBe('HJK');
+  });
 
   it('should render in editMode', () => {
     const underTest = mount(
@@ -28,10 +28,10 @@ describe('Suite for <CompanyName />', () => {
           name: 'HJK',
         }}
         editMode
-      />,
-    )
-    expect(underTest.find('.input-field').length).toBe(1)
-  })
+      />
+    );
+    expect(underTest.find('.input-field').length).toBe(1);
+  });
 
   it('simulates handleChangeCompanyName', () => {
     const underTest = mount(
@@ -41,16 +41,16 @@ describe('Suite for <CompanyName />', () => {
           name: 'HJK',
         }}
         editMode
-      />,
-    )
+      />
+    );
 
-    underTest.node.companiesNames.hjk.value = 'New Title'
-    underTest.find('input').simulate('change')
+    underTest.node.companiesNames.hjk.value = 'New Title';
+    underTest.find('input').simulate('change');
 
-    expect(CompaniesActions.updateCompany).toHaveBeenCalledTimes(1)
-    expect(CompaniesActions.updateCompany).toHaveBeenCalledWith(
-      'hjk',
-      { id: 'hjk', name: 'New Title' },
-    )
-  })
-})
+    expect(CompaniesActions.updateCompany).toHaveBeenCalledTimes(1);
+    expect(CompaniesActions.updateCompany).toHaveBeenCalledWith('hjk', {
+      id: 'hjk',
+      name: 'New Title',
+    });
+  });
+});
