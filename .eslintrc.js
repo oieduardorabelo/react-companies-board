@@ -1,7 +1,12 @@
 module.exports = {
   root: true,
   parser: 'babel-eslint',
-  extends: ['airbnb'],
+  extends: [
+    'airbnb',
+    'prettier',
+    'prettier/react',
+  ],
+  plugins: ['prettier'],
   parseOptions: {
     ecmaVersion: 8,
     sourceType: 'module',
@@ -16,6 +21,6 @@ module.exports = {
     jest: true
   },
   rules: {
-    semi: [2, "never"]
+    'prettier/prettier': ['error', { 'trailingComma': 'es5', 'singleQuote': true }]
   }
 }

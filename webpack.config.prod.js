@@ -1,23 +1,20 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const nodePath = require('path')
-const ProgressBarPlugin = require('progress-bar-webpack-plugin')
-const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const nodePath = require('path');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const webpack = require('webpack');
 
-const path = dir => nodePath.resolve(dir)
+const path = dir => nodePath.resolve(dir);
 
 // Assert this just to be safe.
 // Development builds of React are slow and not intended for production.
 if (process.env.NODE_ENV !== 'production') {
-  throw new Error('Production builds must have NODE_ENV=production.')
+  throw new Error('Production builds must have NODE_ENV=production.');
 }
 
 module.exports = {
   devtool: 'source-map',
   context: path('./'),
-  entry: [
-    require.resolve('./.polyfills'),
-    './main.jsx',
-  ],
+  entry: [require.resolve('./.polyfills'), './main.jsx'],
   output: {
     chunkFilename: '[name].[chunkhash:8].chunk.js',
     filename: '[name].[hash].js',
@@ -64,6 +61,15 @@ module.exports = {
   module: {
     loaders: [
       {
+        enforce: 'pre',
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        options: {
+          fix: true,
+        },
+      },
+      {
         test: /\.(js|jsx)$/,
         loader: 'babel',
         exclude: /node_modules/,
@@ -86,4 +92,4 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
   },
-}
+};
