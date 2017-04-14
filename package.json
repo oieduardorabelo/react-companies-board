@@ -11,7 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "babel-jest": "19.0.0",
-    "enzyme": "2.8.0",
+    "enzyme": "2.8.2",
     "eslint-config-prettier": "1.6.0",
     "eslint-loader": "1.7.1",
     "eslint-plugin-prettier": "2.0.1",
