@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import CompaniesActions from '../actions/CompaniesActions';
 import EmployeesActions from '../actions/EmployeesActions';
 import CompanyName from './CompanyName';
 import Employees from './Employees';
 
-const ReactPropTypes = React.PropTypes;
-
 export default class Company extends Component {
   static propTypes = {
-    company: ReactPropTypes.shape({
-      id: ReactPropTypes.string,
-      name: ReactPropTypes.string,
+    company: PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
     }).isRequired,
-    employees: ReactPropTypes.shape({
-      isCompleted: ReactPropTypes.string,
-      id: ReactPropTypes.string,
+    employees: PropTypes.shape({
+      isCompleted: PropTypes.string,
+      id: PropTypes.string,
     }).isRequired,
   };
 

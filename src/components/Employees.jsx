@@ -1,10 +1,9 @@
 import React from 'react';
 import shortid from 'shortid';
+import PropTypes from 'prop-types';
 
 import EmployeesActions from '../actions/EmployeesActions';
 import Employee from './Employee';
-
-const ReactPropTypes = React.PropTypes;
 
 const Employees = ({ companyId, editMode, employees }) => {
   const handleClickAddEmployee = () => {
@@ -81,12 +80,12 @@ Employees.defaultProps = {
 };
 
 Employees.propTypes = {
-  companyId: ReactPropTypes.string.isRequired,
-  editMode: ReactPropTypes.bool.isRequired,
-  employees: ReactPropTypes.shape({
-    emai: ReactPropTypes.string,
-    firstName: ReactPropTypes.string,
-    id: ReactPropTypes.string,
+  companyId: PropTypes.string.isRequired,
+  editMode: PropTypes.bool.isRequired,
+  employees: PropTypes.shape({
+    emai: PropTypes.string,
+    firstName: PropTypes.string,
+    id: PropTypes.string,
   }),
 };
 

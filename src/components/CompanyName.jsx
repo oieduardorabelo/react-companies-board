@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import CompaniesActions from '../actions/CompaniesActions';
+import PropTypes from 'prop-types';
 
-const ReactPropTypes = React.PropTypes;
+import CompaniesActions from '../actions/CompaniesActions';
 
 export default class CompanyName extends Component {
   static propTypes = {
-    company: ReactPropTypes.shape({
-      id: ReactPropTypes.string,
-      name: ReactPropTypes.string,
+    company: PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
     }).isRequired,
-    editMode: ReactPropTypes.bool.isRequired,
+    editMode: PropTypes.bool.isRequired,
   };
 
   constructor(props) {

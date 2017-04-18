@@ -1,8 +1,8 @@
 import shortid from 'shortid';
 import React, { Component } from 'react';
-import EmployeesActions from '../actions/EmployeesActions';
+import PropTypes from 'prop-types';
 
-const ReactPropTypes = React.PropTypes;
+import EmployeesActions from '../actions/EmployeesActions';
 
 function validateEmail(email) {
   const emailRegex = /^[a-zA-Z0-9.!#$%&"*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/; // eslint-disable-line max-len
@@ -11,12 +11,12 @@ function validateEmail(email) {
 
 export default class Employee extends Component {
   static propTypes = {
-    companyId: ReactPropTypes.string.isRequired,
-    editMode: ReactPropTypes.bool.isRequired,
-    email: ReactPropTypes.string.isRequired,
-    firstName: ReactPropTypes.string.isRequired,
-    id: ReactPropTypes.number.isRequired,
-    lastName: ReactPropTypes.string.isRequired,
+    companyId: PropTypes.string.isRequired,
+    editMode: PropTypes.bool.isRequired,
+    email: PropTypes.string.isRequired,
+    firstName: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    lastName: PropTypes.string.isRequired,
   };
 
   handleRemoveEmployeeClick = () => {
