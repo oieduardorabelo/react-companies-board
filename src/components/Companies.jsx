@@ -23,17 +23,14 @@ export default class Companies extends Component {
     EmployeesStore.addChangeListener(this.onEmployeesStoreChage);
 
     require.ensure(['./Company'], require => {
-      setTimeout(
-        () => {
-          const Company = require('./Company').default;
+      setTimeout(() => {
+        const Company = require('./Company').default;
 
-          this.setState({
-            Company,
-            isLoading: false,
-          });
-        },
-        2000
-      );
+        this.setState({
+          Company,
+          isLoading: false,
+        });
+      }, 2000);
     });
   }
 
