@@ -72,7 +72,7 @@ export default class Companies extends Component {
       const companyEmployess = employess[key];
       return (
         <Company
-          key={shortid.generate()}
+          key={company.id}
           employees={companyEmployess}
           company={company}
         />

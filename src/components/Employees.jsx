@@ -1,5 +1,4 @@
 import React from 'react';
-import shortid from 'shortid';
 import PropTypes from 'prop-types';
 
 import EmployeesActions from '../actions/EmployeesActions';
@@ -50,7 +49,7 @@ const Employees = ({ companyId, editMode, employees }) => {
     return employeesKeys.map(key => {
       const employee = employees[key];
       return (
-        <div key={shortid.generate()}>
+        <div key={employee.id}>
           <Employee
             companyId={companyId}
             editMode={editMode}
