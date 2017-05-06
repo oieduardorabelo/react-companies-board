@@ -10,7 +10,7 @@
   "author": "Eduardo Rabelo <oieduardorabelo@gmail.com> (https://github.com/oieduardorabelo)",
   "license": "MIT",
   "dependencies": {
-    "babel-jest": "19.0.0",
+    "babel-jest": "20.0.0",
     "enzyme": "2.8.2",
     "eslint-config-prettier": "1.7.0",
     "eslint-loader": "1.7.1",
