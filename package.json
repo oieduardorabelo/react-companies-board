@@ -52,7 +52,7 @@
     "object-assign": "4.1.1",
     "promise": "7.1.1",
     "source-map-support": "0.4.15",
-    "style-loader": "0.17.0",
+    "style-loader": "0.18.0",
     "url-loader": "0.5.8",
     "webpack-dev-server": "2.4.5",
     "whatwg-fetch": "2.0.3"
